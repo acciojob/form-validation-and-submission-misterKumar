@@ -19,6 +19,15 @@
             <input type="password" id="password" name="password" required>
         </div>
         <div>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="" disabled selected>Select your gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div>
             <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
         </div>
@@ -36,18 +45,19 @@
             const name = document.getElementById("name").value;
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
+            const gender = document.getElementById("gender").value;
             const message = document.getElementById("message").value;
             const acceptTerms = document.getElementById("acceptTerms").checked;
             const submitButton = document.getElementById("submitButton");
 
-            if (name && email && password && message && acceptTerms) {
+            if (name && email && password && gender && message && acceptTerms) {
                 submitButton.removeAttribute("disabled");
             } else {
                 submitButton.setAttribute("disabled", "disabled");
             }
         }
 
-        const formFields = document.querySelectorAll("input, textarea, #acceptTerms");
+        const formFields = document.querySelectorAll("input, select, textarea, #acceptTerms");
 
         formFields.forEach((field) => {
             field.addEventListener("input", validateForm);
