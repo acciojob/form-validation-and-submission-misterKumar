@@ -1,16 +1,37 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <title>Form Submission</title>
+  <style>
+    /* Add your CSS styles here */
+    #submit-btn {
+      display: none;
+    }
+  </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  <form id="myForm" action="submit-form.php" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
 
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label>
+      <input type="checkbox" id="accept-terms" name="accept-terms"> I accept the terms and conditions
+    </label><br><br>
+
+    <button type="submit" id="submit-btn" disabled>Submit</button>
+  </form>
+
+  <script>
+    // JavaScript to enable/disable the submit button based on checkbox state
+    const checkbox = document.getElementById('accept-terms');
+    const submitButton = document.getElementById('submit-btn');
+
+    checkbox.addEventListener('change', function () {
+      submitButton.disabled = !checkbox.checked;
+    });
+  </script>
 </body>
-
 </html>
