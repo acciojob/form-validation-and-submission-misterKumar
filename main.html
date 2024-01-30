@@ -28,7 +28,7 @@
             </select>
         </div>
         <div>
-            <label for="message">Message:</label>
+            <label for="message" >Message:</label>
             <textarea id="message" name="message" required></textarea>
         </div>
         <div>
@@ -41,28 +41,38 @@
         </div>
     </form>
 
-    <script>
-        function validateForm() {
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-            const gender = document.getElementById("gender").value;
-            const message = document.getElementById("message").value;
-            const acceptTerms = document.getElementById("acceptTerms").checked;
-            const submitButton = document.getElementById("submitButton");
+   <script>
+    function validateForm() {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const gender = document.getElementById("gender").value;
+        const message = document.getElementById("message").value;
+        const acceptTerms = document.getElementById("acceptTerms").checked;
+        const submitButton = document.getElementById("submitButton");
 
-            if (name && email && password && gender && message && acceptTerms) {
-                submitButton.removeAttribute("disabled");
-            } else {
-                submitButton.setAttribute("disabled", "disabled");
-            }
+        if (name && email && password && gender && message && acceptTerms) {
+            submitButton.removeAttribute("disabled");
+        } 
+    }
+
+    function submitForm() {
+        const acceptTerms = document.getElementById("acceptTerms").checked;
+        const submitButton = document.getElementById("submitButton");
+
+        if (acceptTerms) {
+            document.getElementById("myForm").submit();
         }
+    }
 
-        const formFields = document.querySelectorAll("input, select, textarea, #acceptTerms");
+    const formFields = document.querySelectorAll("input, select, textarea, #acceptTerms");
 
-        formFields.forEach((field) => {
-            field.addEventListener("input", validateForm);
-        });
-    </script>
+    formFields.forEach((field) => {
+        field.addEventListener("input", validateForm);
+    });
+
+    // Add an event listener to the checkbox for form submission
+    document.getElementById("acceptTerms").addEventListener("change", submitForm);
+</script>
 </body>
 </html>
