@@ -35,10 +35,6 @@
             <input type="checkbox" id="acceptTerms" name="terms" required>
             <label for="acceptTerms">I accept the terms and conditions</label>
         </div>
-        <div>
-            <!-- Initially disabled submit button -->
-            <button type="submit" id="submitButton" disabled>Submit</button>
-        </div>
     </form>
 
     <script>
@@ -49,12 +45,9 @@
             const gender = document.getElementById("gender").value;
             const message = document.getElementById("message").value;
             const acceptTerms = document.getElementById("acceptTerms").checked;
-            const submitButton = document.getElementById("submitButton");
 
             if (name && email && password && gender && message && acceptTerms) {
-                submitButton.removeAttribute("disabled");
-            } else {
-                submitButton.setAttribute("disabled", "disabled");
+                document.getElementById("myForm").submit(); // Submit the form programmatically
             }
         }
 
